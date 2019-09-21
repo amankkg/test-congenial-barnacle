@@ -3,6 +3,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "now",
     "test": "react-scripts test"
   },
   "dependencies": {
@@ -10,6 +11,7 @@
     "react-dom": "16.9.0"
   },
   "devDependencies": {
+    "now": "16.2.0",
     "react-scripts": "3.1.2"
   },
   "eslintConfig": {
