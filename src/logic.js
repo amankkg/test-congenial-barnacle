@@ -1,10 +1,3 @@
-export const directionMap = {
-  north: 'North',
-  east: 'East',
-  south: 'South',
-  west: 'West'
-}
-
 const rightFromMap = {
   north: 'east',
   east: 'south',

@@ -2,27 +2,28 @@ import React, {useState} from 'react';
 
 import logo from './logo.svg';
 import './App.css';
-import {TextGame} from './text-game'
-import { rightFrom, leftFrom, nextStep } from './logic';
+import {Controls} from './controls'
+import {WorldMap} from './world-map'
+import { rightFrom, leftFrom, nextStep, canIGoThisDirection } from './logic';
+
+const worldDimensions = {x: 5, y: 5}
 
 function App() {
   const [direction, setDirection] = useState('north')
-  const [xy, setXY] = useState({x: 1, y: 2})
+  const [location, setXY] = useState({x: 1, y: 1})
 
   const turnRight = () => {setDirection(rightFrom(direction))}
   const turnLeft = () => {setDirection(leftFrom(direction))}
-  const moveForward = () => {setXY(nextStep(xy, direction))}
+  const moveForward = () => {setXY(nextStep(location, direction))}
+  const canMoveForward = canIGoThisDirection(worldDimensions, location, direction)
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>text game:</h1>
-        <TextGame
-          X={5} Y={5}
-          x={xy.x} y={xy.y} face={direction}
-          turnRight={turnRight} turnLeft={turnLeft} move={moveForward}
-        />
+        <h1>Game</h1>
+        <WorldMap dimensions={worldDimensions} location={location} direction={direction} />
+        <Controls turnRight={turnRight} turnLeft={turnLeft} move={canMoveForward ? moveForward : undefined} />
       </header>
     </div>
   );
