@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import {TextGame} from './text-game'
+import { rightFrom, leftFrom, nextStep } from './logic';
 
 function App() {
   const [direction, setDirection] = useState('north')
   const [xy, setXY] = useState({x: 1, y: 2})
 
-  const turnRight = () => {setDirection(rightFrom[direction])}
-  const turnLeft = () => {setDirection(leftFrom[direction])}
+  const turnRight = () => {setDirection(rightFrom(direction))}
+  const turnLeft = () => {setDirection(leftFrom(direction))}
   const moveForward = () => {setXY(nextStep(xy, direction))}
 
   return (
@@ -27,27 +29,3 @@ function App() {
 }
 
 export default App;
-
-const rightFrom = {
-  north: 'east',
-  east: 'south',
-  south: 'west',
-  west: 'north',
-}
-
-const leftFrom = {
-  north: 'west',
-  east: 'north',
-  south: 'east',
-  west: 'south',
-}
-
-function nextStep(/* location */ {x,y}, direction) {
-  switch (direction) {
-    case 'north': return {x, y: y - 1}
-    case 'east': return {x: x + 1, y}
-    case 'south': return {x, y: y + 1}
-    case 'west': return {x: x - 1, y}
-    default: throw new Error('unknown direction')
-  }
-}

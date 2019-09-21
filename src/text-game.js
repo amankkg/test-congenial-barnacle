@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {directionMap, canIGoThisDirection} from './logic'
+
 function TextGame({X, Y, x, y, face, turnRight, turnLeft, move}) {
   const canGoForward = canIGoThisDirection({x: X, y: Y}, {x,y}, face)
 
@@ -10,7 +12,7 @@ function TextGame({X, Y, x, y, face, turnRight, turnLeft, move}) {
       <small> you're at </small>
       <strong>{x}x{y}</strong>
       <small> and facing </small>
-      <strong>{face}</strong>
+      <strong>{directionMap[face]}</strong>
     </p>
     <button onClick={turnLeft}>turn left</button>
     <button onClick={turnRight}>turn right</button>
@@ -19,13 +21,3 @@ function TextGame({X, Y, x, y, face, turnRight, turnLeft, move}) {
 }
 
 export {TextGame}
-
-function canIGoThisDirection(/* size */ {x:X,y:Y}, /* location */ {x,y}, direction) {
-  switch (direction) {
-    case 'north': return y !== 1
-    case 'east': return x !== X
-    case 'south': return y !== Y
-    case 'west': return x !== 1
-    default: throw new Error('unknown direction')
-  }
-}
