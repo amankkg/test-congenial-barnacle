@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Controls} from './controls'
-import {WorldMap} from './world-map'
+import {HtmlView} from './html-view'
 import { rightFrom, leftFrom, nextStep, canIGoThisDirection } from './logic';
 
 const worldDimensions = {x: 5, y: 5}
@@ -22,7 +22,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Game</h1>
-        <WorldMap dimensions={worldDimensions} location={location} direction={direction} />
+        <HtmlView dimensions={worldDimensions} location={location} direction={direction} />
         <Controls turnRight={turnRight} turnLeft={turnLeft} move={canMoveForward ? moveForward : undefined} />
       </header>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function WorldMap({dimensions, location, direction}) {
+function HtmlView({dimensions, location, direction}) {
   return (
     <p>
       <small>On map of </small>
@@ -13,4 +13,4 @@ function WorldMap({dimensions, location, direction}) {
   )
 }
 
-export {WorldMap}
+export {HtmlView}
