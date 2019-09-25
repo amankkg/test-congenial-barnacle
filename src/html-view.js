@@ -6,12 +6,12 @@ function HtmlView({dimensions, location, direction}) {
 
   return (
     <p>
-      <small>On map of </small>
-      <strong>{X}x{Y}</strong>
+      <small>on map of </small>
+      <code>{X}x{Y}</code>
       <small> you're at </small>
-      <strong>{x}x{y}</strong>
+      <code>{x}x{y}</code>
       <small> and facing </small>
-      <strong>{direction}</strong>
+      <code>{direction}</code>
     </p>
   )
 }
