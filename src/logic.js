@@ -1,42 +1,44 @@
-const rightFromMap = {
-  north: 'east',
-  east: 'south',
-  south: 'west',
-  west: 'north',
-}
-
-export function rightFrom(direction) {
-  return rightFromMap[direction]
-}
-
-const leftFromMap = {
-  north: 'west',
-  east: 'north',
-  south: 'east',
-  west: 'south',
-}
-
-export function leftFrom(direction) {
-  return leftFromMap[direction]
-}
-
-export function nextStep(/* location */ {x,y}, direction) {
+export function turnCW(direction) {
   switch (direction) {
-    case 'north': return {x, y: y - 1}
-    case 'east': return {x: x + 1, y}
-    case 'south': return {x, y: y + 1}
-    case 'west': return {x: x - 1, y}
+    case 'north': return 'east'
+    case 'east': return 'south'
+    case 'south': return 'west'
+    case 'west': return 'north'
     default: throw new Error('unknown direction')
   }
 }
 
-// TODO: curry like this `canGoForward :: Dimensions -> Location -> Direction -> Bool`
-export function canIGoThisDirection(/* dimensions */ {x:X,y:Y}, /* location */ {x,y}, direction) {
+export function turnCCW(direction) {
+  switch (direction) {
+    case 'north': return 'west'
+    case 'east': return 'north'
+    case 'south': return 'east'
+    case 'west': return 'south'
+    default: throw new Error('unknown direction')
+  }
+}
+
+export function canStepForward(dimensions, location, direction) { // TODO: curry: canStepForward :: dimensions -> location -> direction
+  const [X, Y] = dimensions
+  const [x, y] = location
+
   switch (direction) {
     case 'north': return y !== 1
     case 'east': return x !== X
     case 'south': return y !== Y
     case 'west': return x !== 1
+    default: throw new Error('unknown direction')
+  }
+}
+
+export function stepForward(location, direction) {
+  const [x, y] = location
+
+  switch (direction) {
+    case 'north': return [x, y - 1]
+    case 'east': return [x + 1, y]
+    case 'south': return [x, y + 1]
+    case 'west': return [x - 1, y]
     default: throw new Error('unknown direction')
   }
 }

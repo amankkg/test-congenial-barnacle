@@ -1,12 +1,15 @@
 import React from 'react'
 
 function HtmlView({dimensions, location, direction}) {
+  const [X, Y] = dimensions
+  const [x, y] = location
+
   return (
     <p>
       <small>On map of </small>
-      <strong>{dimensions.x}x{dimensions.y}</strong>
+      <strong>{X}x{Y}</strong>
       <small> you're at </small>
-      <strong>{location.x}x{location.y}</strong>
+      <strong>{x}x{y}</strong>
       <small> and facing </small>
       <strong>{direction}</strong>
     </p>
