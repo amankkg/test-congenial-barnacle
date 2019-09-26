@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 
 import './App.css';
 import {Controls} from './controls'
-import {HtmlView} from './html-view'
+// import {HtmlView as GameView} from './html-view'
+// import {CanvasView as GameView} from './canvas-view'
+import {SvgView as GameView} from './svg-view'
 import {turnCW, turnCCW, canStepForward, stepForward} from './logic';
 
 const worldDimensions = [5, 5]
@@ -20,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <HtmlView dimensions={worldDimensions} location={location} direction={direction} />
+        <GameView dimensions={worldDimensions} location={location} direction={direction} />
         <Controls turnRight={turnRight} turnLeft={turnLeft} move={canMoveForward ? moveForward : undefined} />
       </header>
     </div>
