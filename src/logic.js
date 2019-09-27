@@ -18,7 +18,10 @@ export function turnCCW(direction) {
   }
 }
 
-export function canStepForward(dimensions, location, direction) { // TODO: curry canStepForward :: dimensions -> location -> direction -> true|false
+// TODO: this function can be curried
+// canStepForward :: dimensions -> location -> direction -> true|false
+// canStepForward :: dimensions -> (location, direction) -> true|false
+export function canStepForward(dimensions, location, direction) {
   const [X, Y] = dimensions
   const [x, y] = location
 

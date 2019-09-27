@@ -2,16 +2,16 @@ import React, {useState} from 'react';
 
 import './App.css';
 import {Controls} from './controls'
-// import {HtmlView as GameView} from './html-view'
+// import {TextView as GameView} from './text-view'
 // import {CanvasView as GameView} from './canvas-view'
-import {SvgView as GameView} from './svg-view'
+import {HtmlView as GameView} from './html-view'
 import {turnCW, turnCCW, canStepForward, stepForward} from './logic';
 
 const worldDimensions = [5, 5]
 
 function App() {
-  const [direction, setDirection] = useState('north')
-  const [location, setXY] = useState([1, 1])
+  const [direction, setDirection] = useState('east')
+  const [location, setXY] = useState([3, 3])
 
   const turnRight = () => {setDirection(turnCW(direction))}
   const turnLeft = () => {setDirection(turnCCW(direction))}
