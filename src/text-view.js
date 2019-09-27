@@ -1,4 +1,5 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 
 function TextView({dimensions, location, direction}) {
   const [X, Y] = dimensions
@@ -7,9 +8,13 @@ function TextView({dimensions, location, direction}) {
   return (
     <p>
       <small>on map of </small>
-      <code>{X}x{Y}</code>
+      <code>
+        {X}x{Y}
+      </code>
       <small> you're at </small>
-      <code>{x}x{y}</code>
+      <code>
+        {x}x{y}
+      </code>
       <small> and facing </small>
       <code>{direction}</code>
     </p>
