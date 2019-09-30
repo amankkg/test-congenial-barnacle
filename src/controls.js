@@ -10,22 +10,22 @@ type Props = {
 }
 
 function Controls({turnLeft, turnRight, move, ...props}: Props) {
-  const leftText = 'turn left'
-  const rightText = 'turn right'
-  const moveText = 'step forward'
-
   return (
     <div {...props}>
-      <Button onClick={turnLeft} title={leftText}>
-        {leftText}
+      <Button onClick={turnLeft} title="Rotate left">
+        left
       </Button>
-      &nbsp;
-      <Button onClick={turnRight} title={rightText}>
-        {rightText}
+      <Button onClick={turnRight} title="Rotate right">
+        right
       </Button>
       &emsp;
-      <Button onClick={move} disabled={move == null} title={moveText} primary>
-        {moveText}
+      <Button
+        onClick={move}
+        disabled={move == null}
+        title="Move forward"
+        primary
+      >
+        step forward
       </Button>
     </div>
   )

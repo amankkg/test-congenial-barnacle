@@ -8,13 +8,14 @@ type Props = {
 }
 
 const Button: ComponentType<Props> = styled.button`
-  margin: 0.5em;
+  min-width: 17vh;
+  margin: 0.25em;
   padding: 0.25em;
   color: ${getColor};
   font-size: 1em;
   background: none;
   border: 2px solid ${getColor};
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   opacity: 0.85;
 
