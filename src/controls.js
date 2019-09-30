@@ -2,7 +2,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-function Controls({turnLeft, turnRight, move}) {
+type Props = {
+  turnLeft: () => void,
+  turnRight: () => void,
+  move?: () => void,
+}
+
+function Controls({turnLeft, turnRight, move}: Props) {
   return (
     <div>
       <Button onClick={turnLeft} color="royalblue">

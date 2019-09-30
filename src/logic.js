@@ -1,38 +1,34 @@
 // @flow
-export function turnCW(direction) {
-  switch (direction) {
-    case 'north':
-      return 'east'
-    case 'east':
-      return 'south'
-    case 'south':
-      return 'west'
-    case 'west':
-      return 'north'
-    default:
-      throw new Error('unknown direction')
-  }
+import type {Direction, Dimensions, Coordinates} from './types.d'
+
+type DirectionMap = Map<Direction, Direction>
+
+const cwShiftMap: DirectionMap = new Map([
+  ['north', 'east'],
+  ['east', 'south'],
+  ['south', 'west'],
+  ['west', 'north'],
+])
+
+export function turnCW(direction: Direction) {
+  return cwShiftMap.get(direction)
 }
 
-export function turnCCW(direction) {
-  switch (direction) {
-    case 'north':
-      return 'west'
-    case 'east':
-      return 'north'
-    case 'south':
-      return 'east'
-    case 'west':
-      return 'south'
-    default:
-      throw new Error('unknown direction')
-  }
+const ccwShiftMap: DirectionMap = new Map([
+  ['north', 'west'],
+  ['east', 'north'],
+  ['south', 'east'],
+  ['west', 'south'],
+])
+
+export function turnCCW(direction: Direction) {
+  return ccwShiftMap.get(direction)
 }
 
 // this function can be curried
 // canStepForward :: dimensions -> location -> direction -> true|false
 // canStepForward :: dimensions -> (location, direction) -> true|false
-export function canStepForward(dimensions, location, direction) {
+export function canStepForward(dimensions: Dimensions, location: Coordinates, direction: Direction): boolean {
   const [X, Y] = dimensions
   const [x, y] = location
 
@@ -45,12 +41,11 @@ export function canStepForward(dimensions, location, direction) {
       return y !== Y
     case 'west':
       return x !== 1
-    default:
-      throw new Error('unknown direction')
+  default: throw new Error('unknown direction')
   }
 }
 
-export function stepForward(location, direction) {
+export function stepForward(location: Coordinates, direction: Direction): Coordinates {
   const [x, y] = location
 
   switch (direction) {
@@ -62,7 +57,6 @@ export function stepForward(location, direction) {
       return [x, y + 1]
     case 'west':
       return [x - 1, y]
-    default:
-      throw new Error('unknown direction')
+  default: throw new Error('unknown direction')
   }
 }

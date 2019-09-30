@@ -1,7 +1,15 @@
 // @flow
 import * as React from 'react'
 
-function TextView({dimensions, location, direction}) {
+import type {Direction, Dimensions, Location} from './types.d'
+
+type Props = {
+  dimensions: Dimensions,
+  location: Location,
+  direction: Direction,
+}
+
+function TextView({dimensions, location, direction}: Props) {
   const [X, Y] = dimensions
   const [x, y] = location
 
