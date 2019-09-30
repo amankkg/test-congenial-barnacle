@@ -28,24 +28,32 @@ export function turnCCW(direction: Direction) {
 // this function can be curried
 // canStepForward :: dimensions -> location -> direction -> true|false
 // canStepForward :: dimensions -> (location, direction) -> true|false
-export function canStepForward(dimensions: Dimensions, location: Coordinates, direction: Direction): boolean {
+export function canStepForward(
+  dimensions: Dimensions,
+  location: Coordinates,
+  direction: Direction,
+) {
   const [X, Y] = dimensions
   const [x, y] = location
 
   switch (direction) {
     case 'north':
-      return y !== 1
+      return y !== 0
     case 'east':
-      return x !== X
+      return x !== X - 1
     case 'south':
-      return y !== Y
+      return y !== Y - 1
     case 'west':
-      return x !== 1
-  default: throw new Error('unknown direction')
+      return x !== 0
+    default:
+      throw new Error('unknown direction')
   }
 }
 
-export function stepForward(location: Coordinates, direction: Direction): Coordinates {
+export function stepForward(
+  location: Coordinates,
+  direction: Direction,
+): Coordinates {
   const [x, y] = location
 
   switch (direction) {
@@ -57,6 +65,7 @@ export function stepForward(location: Coordinates, direction: Direction): Coordi
       return [x, y + 1]
     case 'west':
       return [x - 1, y]
-  default: throw new Error('unknown direction')
+    default:
+      throw new Error('unknown direction')
   }
 }

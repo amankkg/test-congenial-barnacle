@@ -1,21 +1,9 @@
 // @flow
 import * as React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import type {Direction, Dimensions, Coordinates} from './types.d'
 import {Cell} from './html-cell'
-import {nTimes} from './utils'
-
-const Root = styled.div`
-  margin: 0;
-  padding: 5px 5px 0;
-  border: solid 3px royalblue;
-  border-radius: 10px;
-`
-
-const Row = styled.div`
-  display: block;
-`
 
 type Props = {
   dimensions: Dimensions,
@@ -27,18 +15,33 @@ function HtmlView({dimensions, location, direction}: Props) {
   const [X, Y] = dimensions
   const [x, y] = location
 
-  const rowsArray = React.useMemo(() => nTimes(Y), [Y])
-  const cellsArray = React.useMemo(() => nTimes(X), [X])
+  const rowsArray = React.useMemo(() => Array.from({length: Y}), [Y])
+  const cellsArray = React.useMemo(() => Array.from({length: X}), [X])
 
   return (
     <Root>
-      {rowsArray.map(row => (
-        <Row key={row}>{cellsArray.map(cell => (
-          <Cell key={cell} active={x === cell && y === row} direction={direction} />
-        ))}</Row>
+      {rowsArray.map((_, row) => (
+        <Row key={row}>
+          {cellsArray.map((_, cell) => {
+            const active = x === cell && y === row
+
+            return <Cell key={cell} active={active} direction={direction} />
+          })}
+        </Row>
       ))}
     </Root>
   )
 }
 
 export {HtmlView}
+
+const Root = styled.div`
+  margin: 0;
+  padding: 5px 5px 0;
+  border: solid 3px ${props => props.theme.foreground};
+  border-radius: 10px;
+`
+
+const Row = styled.div`
+  display: block;
+`

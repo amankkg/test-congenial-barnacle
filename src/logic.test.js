@@ -54,7 +54,7 @@ describe('turnCCW', () => {
 
 describe('canStepForward', () => {
   it('should return false if location is at the top and direction is north', () => {
-    const response = canStepForward([3, 3], [2, 1], 'north')
+    const response = canStepForward([3, 3], [2, 0], 'north')
 
     expect(response).toBe(false)
   })

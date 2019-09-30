@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
-import styled from 'styled-components'
+
+import {Button} from './button'
 
 type Props = {
   turnLeft: () => void,
@@ -9,33 +10,25 @@ type Props = {
 }
 
 function Controls({turnLeft, turnRight, move}: Props) {
+  const leftText = 'turn left'
+  const rightText = 'turn right'
+  const moveText = 'step forward'
+
   return (
     <div>
-      <Button onClick={turnLeft} color="royalblue">
-        turn left
+      <Button onClick={turnLeft} title={leftText}>
+        {leftText}
       </Button>
       &nbsp;
-      <Button onClick={turnRight} color="royalblue">
-        turn right
+      <Button onClick={turnRight} title={rightText}>
+        {rightText}
       </Button>
       &emsp;
-      <Button onClick={move} disabled={move == null} color="mediumseagreen">
-        step forward
+      <Button onClick={move} disabled={move == null} title={moveText} primary>
+        {moveText}
       </Button>
     </div>
   )
 }
 
 export {Controls}
-
-const Button = styled.button`
-  margin: 1em;
-  padding: 0.25em 1em;
-  color: ${properties => (properties.disabled ? 'gray' : properties.color)};
-  font-size: 1em;
-  background: none;
-  border: 2px solid
-    ${properties => (properties.disabled ? 'gray' : properties.color)};
-  border-radius: 3px;
-  cursor: ${properties => (properties.disabled ? 'not-allowed' : 'pointer')};
-`
