@@ -9,7 +9,7 @@ type Props = {
   direction: Direction,
 }
 
-function Cell({active, direction}: Props) {
+function Cell({active, direction, ...props}: Props) {
   const endCoordinates = directionCoordinatesMap.get(direction)
 
   if (endCoordinates === undefined)
@@ -19,7 +19,7 @@ function Cell({active, direction}: Props) {
   const title = active ? 'cell with unit' : 'empty cell'
 
   return (
-    <svg width="100" height="100">
+    <svg {...props} viewBox="0 0 100 100">
       <title>{title}</title>
       <Rect x="5" y="5" width="90" height="90" rx="15" ry="15" />
       {active && <Circle cx="50" cy="50" r="40" />}

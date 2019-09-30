@@ -22,11 +22,15 @@ function HtmlView({dimensions, location, direction}: Props) {
     <Root>
       {rowsArray.map((_, row) => (
         <Row key={row}>
-          {cellsArray.map((_, cell) => {
-            const active = x === cell && y === row
-
-            return <Cell key={cell} active={active} direction={direction} />
-          })}
+          {cellsArray.map((_, cell) => (
+            <Cell
+              key={cell}
+              width="10vh"
+              height="10vh"
+              active={x === cell && y === row}
+              direction={direction}
+            />
+          ))}
         </Row>
       ))}
     </Root>

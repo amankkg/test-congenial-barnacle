@@ -8,8 +8,8 @@ type Props = {
 }
 
 const Button: ComponentType<Props> = styled.button`
-  margin: 1em;
-  padding: 0.25em 1em;
+  margin: 0.5em;
+  padding: 0.25em;
   color: ${getColor};
   font-size: 1em;
   background: none;

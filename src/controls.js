@@ -9,13 +9,13 @@ type Props = {
   move?: () => void,
 }
 
-function Controls({turnLeft, turnRight, move}: Props) {
+function Controls({turnLeft, turnRight, move, ...props}: Props) {
   const leftText = 'turn left'
   const rightText = 'turn right'
   const moveText = 'step forward'
 
   return (
-    <div>
+    <div {...props}>
       <Button onClick={turnLeft} title={leftText}>
         {leftText}
       </Button>

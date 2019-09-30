@@ -45,4 +45,8 @@ const Root = styled.div`
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   background-color: ${props => props.theme.background};
+
+  & > * {
+    margin-top: 2vh;
+  }
 `
