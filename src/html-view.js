@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import type {Direction, Dimensions, Coordinates} from './types.d'
+import type {Direction, Dimensions, Coordinates} from './core'
 import {Cell} from './html-cell'
 
 type Props = {

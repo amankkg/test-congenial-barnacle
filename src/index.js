@@ -7,7 +7,7 @@ import {ThemeProvider} from 'emotion-theming'
 import App from './app'
 import {theme, globalStyles} from './styling'
 
-const appNode = (
+const app = (
   <ThemeProvider theme={theme}>
     <>
       <App />
@@ -18,4 +18,4 @@ const appNode = (
 
 const root = document.querySelector('#root')
 
-if (root != null) render(appNode, root)
+if (root != null) render(app, root)

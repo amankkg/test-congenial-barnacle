@@ -4,27 +4,18 @@ import * as React from 'react'
 import {Button} from './button'
 
 type Props = {
-  turnLeft: () => void,
-  turnRight: () => void,
+  rotateLeft: () => void,
+  rotateRight: () => void,
   move?: () => void,
 }
 
-function Controls({turnLeft, turnRight, move, ...props}: Props) {
+function Controls({rotateLeft, rotateRight, move}: Props) {
   return (
-    <div {...props}>
-      <Button onClick={turnLeft} title="Rotate left">
-        left
-      </Button>
-      <Button onClick={turnRight} title="Rotate right">
-        right
-      </Button>
+    <div>
+      <Button onClick={rotateLeft}>left</Button>
+      <Button onClick={rotateRight}>right</Button>
       &emsp;
-      <Button
-        onClick={move}
-        disabled={move == null}
-        title="Move forward"
-        primary
-      >
+      <Button onClick={move} disabled={move == null} primary>
         step forward
       </Button>
     </div>

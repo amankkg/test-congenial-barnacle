@@ -5,37 +5,37 @@ import styled from '@emotion/styled'
 import {Controls} from './controls'
 // import {TextView as GameView} from './text-view'
 import {HtmlView as GameView} from './html-view'
-import {turnCW, turnCCW, canStepForward, stepForward} from './logic'
+import {rotate, stepForward, canStepForward} from './core'
+
+const {useState, useCallback} = React
+const dimensions = [5, 5]
 
 function App() {
-  const [direction, setDirection] = React.useState('east')
-  const [location, setXY] = React.useState([2, 2])
+  const [location, setXY] = useState([2, 2])
+  const [direction, setDirection] = useState(1)
 
-  const turnRight = () => setDirection(turnCW(direction))
-  const turnLeft = () => setDirection(turnCCW(direction))
-  const moveForward = () => setXY(stepForward(location, direction))
-
-  const canMove = canStepForward(worldDimensions, location, direction)
+  const move = useCallback(() => setXY(stepForward(direction)), [direction])
+  const rotateCW = useCallback(() => setDirection(rotate(1)), [])
+  const rotateCCW = useCallback(() => setDirection(rotate(-1)), [])
+  const canMove = canStepForward(dimensions, location, direction)
 
   return (
     <Root>
       <GameView
-        dimensions={worldDimensions}
+        dimensions={dimensions}
         location={location}
         direction={direction}
       />
       <Controls
-        turnRight={turnRight}
-        turnLeft={turnLeft}
-        move={canMove ? moveForward : undefined}
+        rotateRight={rotateCW}
+        rotateLeft={rotateCCW}
+        move={canMove ? move : undefined}
       />
     </Root>
   )
 }
 
 export default App
-
-const worldDimensions = [5, 5]
 
 const Root = styled.div`
   display: flex;
