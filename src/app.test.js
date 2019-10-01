@@ -16,3 +16,7 @@ it('renders without crashing', () => {
   ReactDOM.render(appNode, div)
   ReactDOM.unmountComponentAtNode(div)
 })
+
+it.skip('can move', () => {})
+
+it.skip("can't move", () => {})

@@ -12,20 +12,20 @@ type Props = {
 }
 
 function Cell({active, direction, ...props}: Props) {
-  const [endX, endY] = getEndCoordinates(direction)
+  const [x2, y2] = getLineEnd(direction)
 
   return (
     <svg {...props} viewBox="0 0 100 100">
       <Rect x="5" y="5" width="90" height="90" rx="15" ry="15" />
       {active && <Circle cx="50" cy="50" r="40" />}
-      {active && <Line x1="50" y1="50" x2={endX} y2={endY} />}
+      {active && <Line x1="50" y1="50" x2={x2} y2={y2} />}
     </svg>
   )
 }
 
 export {Cell}
 
-function getEndCoordinates(direction: Direction): Coordinates {
+function getLineEnd(direction: Direction): Coordinates {
   switch (direction) {
     case North:
       return [50, 10]

@@ -2,7 +2,7 @@
 export class DirectionError extends Error {
   name = 'DirectionError'
 
-  constructor(value: number) {
+  constructor(value?: number | string = '') {
     super(`Direction ${value} is unknown or unhandled`)
   }
 }
